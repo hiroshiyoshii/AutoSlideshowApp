@@ -11,6 +11,7 @@ import android.provider.MediaStore
 import android.content.ContentUris
 import android.os.Handler
 import java.util.*
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -57,9 +58,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             PERMISSIONS_REQUEST_CODE ->
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     getContentsInfo()
+                } else {
+                    startstop_button.isEnabled = false
+                    start_button.isEnabled = false
+                    back_button.isEnabled = false
+
+                    }
+
                 }
+
+
         }
-    }
 
     private fun getContentsInfo() {
         // 画像の情報を取得する
